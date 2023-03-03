@@ -40,7 +40,7 @@ public class ChitietBanHangEdit extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			request.setAttribute("listctbh", ChiTietBanHangDAO.getACTBH(Integer.valueOf(request.getParameter("id"))));

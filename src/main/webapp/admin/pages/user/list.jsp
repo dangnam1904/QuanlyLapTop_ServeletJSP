@@ -84,7 +84,7 @@
 										<tr>
 											<td><%=l.getIdUser()%></td>
 											<td><%=l.getUsername()%></td>
-												<td style="min-width: 100px;">
+												<td style="min-width: 40px;">
 												<%
 												if (l.getImage() != "") {
 												%> <a href="../../lib/images/<%=l.getImage()%>"> <img

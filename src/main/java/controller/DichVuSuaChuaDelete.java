@@ -25,7 +25,7 @@ public class DichVuSuaChuaDelete extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			if (DichVuSuaChuaDAO.deleteDV(id)) {

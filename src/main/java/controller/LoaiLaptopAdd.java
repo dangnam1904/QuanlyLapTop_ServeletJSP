@@ -33,7 +33,12 @@ public class LoaiLaptopAdd extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("admin") == null) {
-			response.sendRedirect("../../../login");
+			if(session.getAttribute("nhanvien") != null) {
+				response.sendRedirect("../home/index");
+				session.setAttribute("errorRole", "yes");
+			}else {
+				response.sendRedirect("../../../login");
+			}
 		} else {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("add.jsp");

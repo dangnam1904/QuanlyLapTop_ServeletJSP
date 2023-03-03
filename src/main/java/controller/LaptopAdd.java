@@ -37,8 +37,14 @@ public class LaptopAdd extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
-			response.sendRedirect("../../../login");
+		if (session.getAttribute("admin") == null ) {
+			if(session.getAttribute("nhanvien") != null) {
+				response.sendRedirect("../home/index");
+				session.setAttribute("errorRole", "yes");
+			}else {
+				response.sendRedirect("../../../login");
+			}
+			
 		} else {
 		
 		RequestDispatcher dispatcher= request.getRequestDispatcher("add.jsp");

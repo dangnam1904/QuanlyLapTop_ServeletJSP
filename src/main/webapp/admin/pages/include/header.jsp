@@ -4,7 +4,12 @@
 <!-- Header-->
  <%
     Users user = new Users();
-     user = (Users) session.getAttribute("admin");
+ if(session.getAttribute("admin")!=null){
+	 user = (Users) session.getAttribute("admin");
+ }else{ 
+	 user = (Users) session.getAttribute("nhanvien");
+ }
+     
  %>
         <header id="header" class="header">
             <div class="top-left">
@@ -63,7 +68,11 @@
 						<img class="user-avatar rounded-circle" src="https://placehold.it/270x270">
 						<%
 							}
-						%>   
+						%>  
+						<%
+							if (user.getImage()==null) {
+						%>  <img class="user-avatar rounded-circle" src="https://placehold.it/270x270">
+						<%} %>
                         </a>
 
                         <div class="user-menu dropdown-menu">

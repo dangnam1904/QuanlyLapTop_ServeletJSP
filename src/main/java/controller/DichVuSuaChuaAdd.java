@@ -29,7 +29,7 @@ public class DichVuSuaChuaAdd extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("add.jsp");

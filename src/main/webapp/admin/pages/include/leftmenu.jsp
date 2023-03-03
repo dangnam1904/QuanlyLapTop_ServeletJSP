@@ -11,9 +11,15 @@
 						CHỦ</a></li>
 				<li class="menu-title">MENU</li>
 				<!-- /.menu-title -->
+					<% if(session.getAttribute("admin")!=null){ %>
+				<li><a href="../user/list"> <i class="menu-icon fa fa-user"></i>Tài
+						khoản
+				</a></li>
+			
 				<li><a href="../loailaptop/list"> <i
 						class="menu-icon fa fa-building-o"></i>Loại laptop
 				</a></li>
+				<% }%>
 				<li><a href="../laptop/list"> <i
 						class="menu-icon ti-receipt"></i>Laptop
 				</a></li>
@@ -25,8 +31,8 @@
 				<li><a href="../nhaphang/list"> <i
 						class="menu-icon fa fa-id-card-o"></i>Nhập hàng
 				</a></li>
-				<li><a href="../user/list"> <i class="menu-icon fa fa-user"></i>Tài
-						khoản
+				<li><a href="../dichvusuachua/listdichvusuachua"> <i
+						class="menu-icon fa fa-id-card-o"></i>Dịch vụ sửa chữa
 				</a></li>
 				<li><a href="../thongke/banhang"> <i
 						class="menu-icon fa fa-bar-chart"></i>Thống kê doanh thu

@@ -222,6 +222,16 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
+<%
+	if ((String) session.getAttribute("errorRole") == "yes") {
+	%>
+	<script>
+		swal('Bạn không có quyền sử dung chức năng này');
+	</script>
+	<%
+	session.removeAttribute("error");
+	}
+	%>
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			var valueNgay = $('#valueNgay').val();

@@ -36,7 +36,13 @@ public class LoginController extends HttpServlet {
 		Users user = UserDAO.CheckLogin(request.getParameter("username"), request.getParameter("password"));
 		HttpSession session = request.getSession();
 		if (user != null) {
-			session.setAttribute("admin", user);
+			if(user.getIdRole()==1) {
+				session.setAttribute("admin", user);
+			}else
+			{
+				session.setAttribute("nhanvien", user);
+			}
+			
 			response.sendRedirect("./admin/pages/home/index");
 		} else {
 			String error = "Sai taì khoản hoặc mật khẩu, vui lòng kiểm tra lại!";

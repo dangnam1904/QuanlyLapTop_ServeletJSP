@@ -36,7 +36,7 @@ public class NhapHangDelete extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			if (request.getParameter("id") != null && request.getParameter("id") != "") {

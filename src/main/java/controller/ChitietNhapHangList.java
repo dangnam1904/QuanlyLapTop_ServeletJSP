@@ -35,8 +35,8 @@ public class ChitietNhapHangList extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-
-		if (session.getAttribute("admin") == null) {
+ 
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			String idNhapHang = request.getParameter("id");

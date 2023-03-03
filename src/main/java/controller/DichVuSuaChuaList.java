@@ -31,7 +31,7 @@ public class DichVuSuaChuaList extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			System.out.println(request.getParameter("search"));

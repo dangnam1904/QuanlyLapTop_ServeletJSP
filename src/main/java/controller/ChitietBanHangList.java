@@ -38,7 +38,7 @@ public class ChitietBanHangList extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("admin") == null) {
+		if (session.getAttribute("admin") == null && session.getAttribute("nhanvien") ==null) {
 			response.sendRedirect("../../../login");
 		} else {
 			session.setAttribute("idBH", request.getParameter("id"));

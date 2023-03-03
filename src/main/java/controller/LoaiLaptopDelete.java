@@ -31,7 +31,12 @@ public class LoaiLaptopDelete extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("admin") == null) {
-			response.sendRedirect("../../../login");
+			if(session.getAttribute("nhanvien") != null) {
+				response.sendRedirect("../home/index");
+				session.setAttribute("errorRole", "yes");
+			}else {
+				response.sendRedirect("../../../login");
+			}
 		} else {
 			if (LoaiLaptopDAO.deleteLoaiLapTop(Integer.valueOf(request.getParameter("id")))) {
 

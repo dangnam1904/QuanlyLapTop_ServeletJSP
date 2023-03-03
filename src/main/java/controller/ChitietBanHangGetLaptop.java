@@ -45,11 +45,7 @@ public class ChitietBanHangGetLaptop extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-
-		if (session.getAttribute("admin") == null) {
-			response.sendRedirect("../../../login");
-		} else {
+	
 			request.setCharacterEncoding("UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
@@ -59,7 +55,6 @@ public class ChitietBanHangGetLaptop extends HttpServlet {
 			result.add(String.valueOf(laptop.getGiaBan()));
 
 			response.getWriter().append(result.toString());
-		}
 	}
 
 }

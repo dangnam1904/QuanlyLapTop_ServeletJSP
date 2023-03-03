@@ -34,7 +34,12 @@ public class LoaiLaptopList extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("admin") == null) {
-			response.sendRedirect("../../../login");
+			if(session.getAttribute("nhanvien") != null) {
+				response.sendRedirect("../home/index");
+				session.setAttribute("errorRole", "yes");
+			}else {
+				response.sendRedirect("../../../login");
+			}
 		} else {
 		request.setAttribute("list", LoaiLaptopDAO.getAllLoaiLaptop("select * from loailaptop"));
 		RequestDispatcher dispatcher= request.getRequestDispatcher("list.jsp");
