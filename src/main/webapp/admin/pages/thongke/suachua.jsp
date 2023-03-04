@@ -1,14 +1,14 @@
-<%@page import="model.ThongKeNhapHang"%>
+<%@page import="model.DichVuSuaChua"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="model.ThongKeDoanhThu"%>
+<%@ page import="model.DichVuSuaChua"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html class="no-js" lang="">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin - Thống kê nhập hàng</title>
+<title>Admin - Bán hàng</title>
 <meta name="description" content="Admin - Bán hàng">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,7 +33,7 @@
 						<div class="page-header float-left">
 							<div class="page-title">
 								<h1>
-									<b>THỐNG KÊ NHẬP HÀNG</b>
+									<b>THỐNG KÊ  SỬA CHỮA</b>
 								</h1>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 								<strong>KHOẢNG THỜI GIAN</strong>
 							</div>
 							<div class="card-body card-block">
-								<form action="nhaphang" method="post"
+								<form action="suachua" method="post"
 									enctype="application/x-www-form-urlencoded"
 									class="form-horizontal">
 									<div class="row">
@@ -103,20 +103,22 @@
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th>STT</th>
-											<th>Người gửi</th>
-											<th>SĐT</th>
-											<th>Địa chỉ</th>
-											<th>Ghi chú</th>
-											<th>Ngày Bán</th>
+											<th>ID</th>
+											<th>Tên Khách hàng</th>
+											<th>Số điện thoại</th>
+											<th>Nội dung sửa</th>
+											
+											<th>Ngày nhận</th>
+											<th>Ngày Trả</th>
+											
+											<th>Giá tiền</th>
 										
-											<th>Tổng tiền</th>
 										</tr>
 									</thead>
 									<tbody>
 										<%
 									 	
-											ArrayList<ThongKeNhapHang> list = (ArrayList<ThongKeNhapHang>) request.getAttribute("list");
+											ArrayList<DichVuSuaChua> list = (ArrayList<DichVuSuaChua>) request.getAttribute("list");
 										if(list!=null){
 
 											int stt=0;
@@ -125,12 +127,13 @@
 										%>
 										<tr>
 											<td><%=stt%></td>
-											<td><%=list.get(i).getTenNguoiGui()%></td>
-											<td><%=list.get(i).getSdtNguoiGui()%></td>
-											<td><%=list.get(i).getDiaChi()%></td>
-											<td><%=list.get(i).getGhiChu()%></td>
-											<td><%=list.get(i).getNgayNhap()%></td>
-											<td><%=list.get(i).getTongTien()%></td>
+											<td><%=list.get(i).getTenKhach()%></td>
+											<td><%=list.get(i).getSdtKhach()%></td>
+											<td><%=list.get(i).getNoiDungSuaChua()%></td>
+											<td><%=list.get(i).getNgayNhan()%></td>
+											<td><%=list.get(i).getNgayTra()%></td>
+											<td><%=list.get(i).getGiaTien()%></td>
+											
 										</tr>
 										<%
 											}
@@ -140,11 +143,12 @@
 								</table>
 							</div>
 							<div class="card-footer">
-									<div class="float-right"
+							<div class="float-right"
 									style="color: red; margin-right: 10px; font-size: 18px">
 									<hr style="border-top: 2px solid red;">
 									<h5 id="tongtien"></h5>
 								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -202,7 +206,8 @@
 	<script src="../../lib/assets/js/lib/data-table/buttons.colVis.min.js"></script>
 	<script src="../../lib/assets/js/init/datatables-init.js"></script>
 
-	<script type="text/javascript">
+
+<script type="text/javascript">
   $(document).ready(function() {
 	 
 		let a=0;
@@ -211,6 +216,7 @@
 		
 		for( let i= 1; i<rowCount; i++){
 			a= document.getElementById("bootstrap-data-table").rows[i].cells[6].innerText;
+		
 			a= parseInt(a);
 			sum=sum+a;
 			}
@@ -226,6 +232,7 @@
 			valueNgay = JSON.parse(valueNgay);
 			var valueTongTien = $('#valueTongTien').val();
 			valueTongTien = JSON.parse(valueTongTien);
+			console.log(valueTongTien)
 			
 			var canvas = document.getElementById('myChart');
 			canvas.height = 110;

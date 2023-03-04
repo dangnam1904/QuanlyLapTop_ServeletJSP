@@ -211,7 +211,7 @@
 		var rowCount = $('#bootstrap-data-table tr').length;
 		
 		for( let i= 1; i<rowCount; i++){
-			a= document.getElementById("bootstrap-data-table").rows[1].cells[6].innerText;
+			a= document.getElementById("bootstrap-data-table").rows[i].cells[6].innerText;
 			a= parseInt(a);
 			sum=sum+a;
 			}

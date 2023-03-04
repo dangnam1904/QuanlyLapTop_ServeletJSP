@@ -40,6 +40,9 @@
 					<li><a href="../thongke/nhaphang"> <i
 						class="menu-icon fa fa-bar-chart"></i>Thống kê nhập hàng
 				</a></li>
+				<li><a href="../thongke/suachua"> <i
+						class="menu-icon fa fa-bar-chart"></i>Thống kê sửa chữa
+				</a></li>
 				<li class="menu-item-has-children">
 			</ul>
 		</div>
